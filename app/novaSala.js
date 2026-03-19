@@ -1,0 +1,71 @@
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
+import { useState, useContext } from "react";
+import { useRouter } from "expo-router";
+import { SalasContext } from "../context/SalasContext";
+
+export default function NovaSala() {
+  const [nome, setNome] = useState("");
+  const router = useRouter();
+  const { adicionarSala } = useContext(SalasContext);
+
+  function adicionarSalaHandler() {
+    if (!nome.trim()) return;
+
+    adicionarSala(nome);
+    router.back();
+  }
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.titulo}>Nova Sala</Text>
+
+      <TextInput
+        style={styles.input}
+        placeholder="Nome da sala"
+        placeholderTextColor="#aaa"
+        value={nome}
+        onChangeText={setNome}
+      />
+
+      <TouchableOpacity style={styles.botao} onPress={adicionarSalaHandler}>
+        <Text style={styles.botaoTexto}>Salvar</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: "#0a0a0a",
+  },
+  titulo: {
+    color: "#fff",
+    fontSize: 22,
+    marginBottom: 20,
+  },
+  input: {
+    backgroundColor: "#1a1a1a",
+    color: "#fff",
+    padding: 10,
+    borderRadius: 8,
+  },
+  botao: {
+    backgroundColor: "#E1306C",
+    padding: 15,
+    borderRadius: 10,
+    marginTop: 20,
+  },
+  botaoTexto: {
+    color: "#fff",
+    textAlign: "center",
+    fontWeight: "bold",
+  },
+});
