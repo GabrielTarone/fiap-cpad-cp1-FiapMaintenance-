@@ -1,46 +1,42 @@
-// Aba para adicionar sala
+// Aba de remover salas
 
 import { useRouter } from "expo-router";
 import { useContext, useState } from "react";
 import {
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
 } from "react-native";
 import { SalasContext } from "../context/SalasContext";
 
-export default function NovaSala() {
+export default function RemoverSala() {
   const [nome, setNome] = useState("");
   const router = useRouter();
-  const { adicionarSala } = useContext(SalasContext);
+const { removerSalaPorNome } = useContext(SalasContext);
 
-  function adicionarSalaHandler() {
-    if (!nome.trim()) return;
+function removerSalaHandler() {
+  if (!nome.trim()) return;
 
-    const id = adicionarSala(nome);
-
-    router.replace({
-      pathname: "/reportar",
-      params: { id },
-    });
-  }
+  removerSalaPorNome(nome);
+  router.replace("/");
+}
 
   return (
     <View style={styles.container}>
-      <Text style={styles.titulo}>Nova Sala</Text>
+      <Text style={styles.titulo}>Qual Sala Gostaria de Remover?</Text>
 
       <TextInput
         style={styles.input}
-        placeholder="Número da sala"
+        placeholder="Digite o nome da sala"
         placeholderTextColor="#aaa"
         value={nome}
         onChangeText={setNome}
       />
 
-      <TouchableOpacity style={styles.botao} onPress={adicionarSalaHandler}>
-        <Text style={styles.botaoTexto}>Cadastrar</Text>
+      <TouchableOpacity style={styles.botao} onPress={removerSalaHandler}>
+        <Text style={styles.botaoTexto}>Remover</Text>
       </TouchableOpacity>
     </View>
   );

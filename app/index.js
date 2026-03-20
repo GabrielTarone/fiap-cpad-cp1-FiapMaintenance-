@@ -1,3 +1,5 @@
+// Pagina Home do App
+
 import { useRouter } from "expo-router";
 import { useContext } from "react";
 import {
@@ -104,7 +106,16 @@ export default function Home() {
       >
         <Text style={styles.botaoTexto}>Cadastrar Sala</Text>
       </TouchableOpacity>
+
+      {/* Botão remover sala */}
+      <TouchableOpacity
+        style={styles.botao}
+        onPress={() => router.push("/removerSala")}
+      >
+        <Text style={styles.botaoTexto}>Remover Sala</Text>
+      </TouchableOpacity>
     </View>
+
   );
 }
 

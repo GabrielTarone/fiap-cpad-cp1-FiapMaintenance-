@@ -28,11 +28,23 @@ export function SalasProvider({ children }) {
           : sala,
       ),
     );
+
+}
+
+  function removerSalaPorNome(nome) {
+    setSalas((prev) =>
+      prev.filter((sala) => sala.nome !== nome)
+    );
   }
 
+
   return (
-    <SalasContext.Provider value={{ salas, adicionarSala, adicionarProblema }}>
+    <SalasContext.Provider value={{
+      salas, 
+      adicionarSala, 
+      adicionarProblema,
+      removerSalaPorNome,}}>
       {children}
     </SalasContext.Provider>
-  );
+  )
 }

@@ -1,3 +1,5 @@
+// Mostra os detalhes da sala
+
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useContext } from "react";
 import {
@@ -51,7 +53,20 @@ export default function Detalhes() {
         <Text style={styles.botaoTexto}>Cadastrar Problema</Text>
       </TouchableOpacity>
 
-      {/* Botão reportar problema */}
+      {/* Botão remover problema */}
+      <TouchableOpacity
+        style={styles.botao}
+        onPress={() =>
+          router.push({
+            pathname: "/removeProblema",
+            params: { id },
+          })
+        }
+      >
+        <Text style={styles.botaoTexto}>Remover Cadastro</Text>
+      </TouchableOpacity>
+
+      {/* Botão voltar para Home */}
       <TouchableOpacity
         style={styles.botao}
         onPress={() => router.replace("/")}
