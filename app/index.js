@@ -73,7 +73,10 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.titulo}>Cadastro de Manutenção</Text>
+      <Text style={styles.titulo}>
+        <Text style={styles.tituloDestaque}>Cadastro </Text>
+        <Text style={styles.tituloSecundario}>de Manutenção</Text>
+      </Text>
 
       {/* Prioridades */}
       <Text style={styles.info}>Lista de Prioridades</Text>
@@ -153,9 +156,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#0a0a0a",
   },
   titulo: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 30,
+    textAlign: "center",
+  },
+  tituloDestaque: {
+    color: "#E1306C",
+  },
+  tituloSecundario: {
     color: "#fff",
-    fontSize: 22,
-    marginBottom: 20,
+    letterSpacing: 2,
   },
   info: {
     color: "#888",
