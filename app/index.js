@@ -4,6 +4,7 @@ import { useRouter } from "expo-router";
 import { useContext } from "react";
 import {
   FlatList,
+  Image,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -43,29 +44,21 @@ export default function Home() {
     (s) => s.problemas.length === 0,
   );
 
-  // Pega o problema mais urgente da sala
-  function getProblemaMaisUrgente(sala) {
-    if (!sala.problemas.length) return null;
-
-    const alta = sala.problemas.find((p) => p.urgencia === "alta");
-    if (alta) return alta;
-
-    const media = sala.problemas.find((p) => p.urgencia === "media");
-    if (media) return media;
-
-    return sala.problemas[0];
-  }
-
   return (
     <View style={styles.container}>
-      <Text style={styles.titulo}>
-        <Text style={styles.tituloDestaque}>Cadastro </Text>
-        <Text style={styles.tituloSecundario}>de Manutenção</Text>
-      </Text>
+      <View style={styles.header}>
+        <Text style={styles.titulo}>
+          <Text style={styles.tituloDestaque}>Cadastro </Text>
+          <Text style={styles.tituloSecundario}>de Manutenção</Text>
+        </Text>
 
+        <Image
+          source={require("../assets/images/logo_fiap.png")}
+          style={styles.logo}
+        />
+      </View>
       {/* Prioridades */}
       <Text style={styles.info}>Lista de Prioridades</Text>
-
       <FlatList
         data={salasComProblema}
         keyExtractor={(item) => item.id}
@@ -84,10 +77,8 @@ export default function Home() {
           <Text style={styles.vazio}>Nenhuma sala com problemas</Text>
         }
       />
-
       {/* Salas sem problemas */}
       <Text style={styles.info}>Sem problemas / Solucionados</Text>
-
       <FlatList
         data={salasSemProblema}
         keyExtractor={(item) => item.id}
@@ -106,7 +97,6 @@ export default function Home() {
           <Text style={styles.vazio}>Todas as salas possuem problemas</Text>
         }
       />
-
       {/* Botão cadastrar sala */}
       <TouchableOpacity
         style={styles.botao}
@@ -114,7 +104,6 @@ export default function Home() {
       >
         <Text style={styles.botaoTexto}>Cadastrar Sala</Text>
       </TouchableOpacity>
-
       {/* Botão remover sala */}
       <TouchableOpacity
         style={styles.botao}
@@ -132,11 +121,16 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "#0a0a0a",
   },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 20,
+  },
   titulo: {
-    fontSize: 15,
+    flex: 1,
+    fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 30,
-    textAlign: "left",
   },
   tituloDestaque: {
     color: "#E1306C",
@@ -161,10 +155,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
   },
-  whatsappTexto: {
-    color: "#25D366",
-    fontSize: 16,
-    fontWeight: "bold",
+  logo: {
+    width: 80,
+    height: 50,
+    resizeMode: "contain",
+    marginLeft: 10,
   },
   vazio: {
     color: "#aaa",
