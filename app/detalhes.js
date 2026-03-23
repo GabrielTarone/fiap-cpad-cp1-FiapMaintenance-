@@ -2,22 +2,22 @@
 
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useContext } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import ProblemaItem from "../components/ProblemaItem";
 import { SalasContext } from "../context/SalasContext";
 
 export default function Detalhes() {
   const { id, nome } = useLocalSearchParams();
   const router = useRouter();
-  const { salas } = useContext(SalasContext);
+  const { salas, finalizarProblema } = useContext(SalasContext);
 
   const sala = salas.find((s) => s.id === id);
 
   // Ordenar por urgência (alta primeiro)
   const problemasOrdenados = sala?.problemas
     ? [...sala.problemas].sort((a, b) =>
-        a.urgencia === "alta" && b.urgencia !== "alta" ? -1 : 1,
-      )
+      a.urgencia === "alta" && b.urgencia !== "alta" ? -1 : 1,
+    )
     : [];
 
   return (
@@ -28,9 +28,31 @@ export default function Detalhes() {
       {problemasOrdenados.length === 0 ? (
         <Text style={styles.semProblemas}>Nenhum problema reportado</Text>
       ) : (
+
+        //Antes 
+        /*problemasOrdenados.map((p, index) => (
+          <View key={index}>
+            <ProblemaItem problema={p} />
+          </View>
+        ))*/
         problemasOrdenados.map((p, index) => (
           <View key={index}>
             <ProblemaItem problema={p} />
+            {p.status !== "finalizado" && (
+              <TouchableOpacity
+                style={styles.botaoFinalizar}
+                onPress={() => {
+                  finalizarProblema(id, p.computador);
+                  Alert.alert(
+                    "Sucesso",
+                    "Problema finalizado com sucesso!",
+                    [{ text: "OK", onPress: () => router.replace("/") }]
+                  );
+                }}
+              >
+                <Text style={styles.botaoTexto}>Finalizar</Text>
+              </TouchableOpacity>
+            )}
           </View>
         ))
       )}
@@ -92,4 +114,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   botaoTexto: { color: "#fff", textAlign: "center", fontWeight: "bold" },
+
+  botaoFinalizar: {
+    backgroundColor: "#E1306C",
+    padding: 15,
+    borderRadius: 10,
+    marginTop: 20,
+  },
 });
