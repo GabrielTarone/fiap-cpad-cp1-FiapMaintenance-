@@ -30,9 +30,12 @@ Escolhemos trabalhar com o **gerenciamento de salas e chamados de manutenção**
 
 | Nome Completo |
 |---------------|
-| *(insira aqui o nome completo do integrante 1)* |
-| *(insira aqui o nome completo do integrante 2)* |
-| *(insira aqui o nome completo do integrante 3)* |
+| *Vinicius Ribeiro Dias rm-566468* |
+| *Bruno Anselmo rm-566521* |
+| *Gabriel Ber Soares rm-563520* |
+| *Guilherme de freitas salgado rm-562494* |
+| *Fernando de Almeida Godoi rm-564820* |
+| *Robin Luka rm-563111* |
 
 ---
 
