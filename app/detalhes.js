@@ -50,7 +50,7 @@ export default function Detalhes() {
                   );
                 }}
               >
-                <Text style={styles.botaoTexto}>Finalizar</Text>
+                <Text style={styles.botaoTexto}>Finalizar -- {p.computador}</Text>
               </TouchableOpacity>
             )}
           </View>
