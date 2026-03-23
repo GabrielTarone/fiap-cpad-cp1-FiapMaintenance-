@@ -4,7 +4,6 @@ import { useRouter } from "expo-router";
 import { useContext } from "react";
 import {
   FlatList,
-  Linking,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -57,20 +56,6 @@ export default function Home() {
     return sala.problemas[0];
   }
 
-  // Chamar o técnico por whatsapp com base na sala mais urgente
-  function chamarTecnicoGeral() {
-    const salaMaisUrgente = salasOrdenadas.find((s) => s.problemas.length > 0);
-
-    if (!salaMaisUrgente) return;
-
-    const problema = getProblemaMaisUrgente(salaMaisUrgente);
-
-    const msg = `${salaMaisUrgente.nome} - ${problema.computador}: ${problema.descricao}`;
-    const url = `https://wa.me/5511981700028?text=${encodeURIComponent(msg)}`;
-
-    Linking.openURL(url);
-  }
-
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>
@@ -121,14 +106,6 @@ export default function Home() {
           <Text style={styles.vazio}>Todas as salas possuem problemas</Text>
         }
       />
-
-      {/* Botão whatsapp */}
-      <TouchableOpacity
-        style={styles.botaoWhatsapp}
-        onPress={chamarTecnicoGeral}
-      >
-        <Text style={styles.whatsappTexto}>Chamar técnico</Text>
-      </TouchableOpacity>
 
       {/* Botão cadastrar sala */}
       <TouchableOpacity
@@ -183,15 +160,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     textAlign: "center",
     fontWeight: "bold",
-  },
-  whatsapp: {
-    color: "#25D366",
-    marginBottom: 10,
-    alignSelf: "flex-start",
-  },
-  botaoWhatsapp: {
-    marginBottom: 10,
-    alignSelf: "flex-start",
   },
   whatsappTexto: {
     color: "#25D366",
