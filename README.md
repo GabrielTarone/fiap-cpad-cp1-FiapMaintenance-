@@ -1,10 +1,10 @@
-#  FIAP Maintenance
+# FIAP Maintenance
 
 > Aplicativo mobile para gerenciamento de manutenção de salas e laboratórios da FIAP.
 
 ---
 
-##  Sobre o Projeto
+## Sobre o Projeto
 
 A FIAP possui diversos laboratórios e salas de aula com computadores e equipamentos que, frequentemente, apresentam problemas técnicos. Na prática, esses problemas muitas vezes são ignorados ou demoram muito tempo para serem resolvidos — o que prejudica professores e alunos durante as aulas.
 
@@ -25,20 +25,20 @@ Escolhemos trabalhar com o **gerenciamento de salas e chamados de manutenção**
 
 ---
 
-##  Integrantes do Grupo
+## Integrantes do Grupo
 
-| Nome Completo |
-|---------------|
-| *Vinicius Ribeiro Dias rm-566468* |
-| *Bruno Anselmo rm-566521* |
-| *Gabriel Ber Soares rm-563520* |
-| *Guilherme de freitas salgado rm-562494* |
-| *Fernando de Almeida Godoi rm-564820* |
-| *Robin Luka rm-563111* |
+| Nome Completo                            |
+| ---------------------------------------- |
+| _Vinicius Ribeiro Dias rm-566468_        |
+| _Bruno Anselmo rm-566521_                |
+| _Gabriel Ber Soares rm-563520_           |
+| _Guilherme de freitas salgado rm-562494_ |
+| _Fernando de Almeida Godoi rm-564820_    |
+| _Robin Luka rm-563111_                   |
 
 ---
 
-##  Como Rodar o Projeto
+## Como Rodar o Projeto
 
 ### Pré-requisitos
 
@@ -81,10 +81,12 @@ Após rodar o comando acima, um QR Code vai aparecer no terminal. Basta escanear
 > Também é possível rodar em emuladores Android ou simuladores iOS, caso tenha o ambiente configurado.
 
 ---
+
 ## Caso queira conhecer o app:
+
 youtube: https://youtube.com/shorts/nE_-UOeD_BI?feature=share
 
-##  Decisões Técnicas
+## Decisões Técnicas
 
 ### Como o projeto foi estruturado
 
@@ -98,12 +100,12 @@ O projeto foi organizado em pastas com responsabilidades bem definidas:
 
 ### Hooks utilizados e para quê
 
-| Hook | Onde é usado | Para quê |
-|------|-------------|----------|
-| `useState` | Telas de formulário | Controla os campos digitados pelo usuário (nome da sala, descrição do problema, urgência selecionada) |
-| `useContext` | Todas as telas | Acessa o estado global de salas e problemas sem precisar passar props manualmente |
-| `useLocalSearchParams` | Telas de detalhe | Lê os parâmetros da rota (ex: ID e nome da sala) para saber qual sala foi selecionada |
-| `useColorScheme` | Hooks de tema | Detecta se o dispositivo está em modo claro ou escuro |
+| Hook                   | Onde é usado        | Para quê                                                                                              |
+| ---------------------- | ------------------- | ----------------------------------------------------------------------------------------------------- |
+| `useState`             | Telas de formulário | Controla os campos digitados pelo usuário (nome da sala, descrição do problema, urgência selecionada) |
+| `useContext`           | Todas as telas      | Acessa o estado global de salas e problemas sem precisar passar props manualmente                     |
+| `useLocalSearchParams` | Telas de detalhe    | Lê os parâmetros da rota (ex: ID e nome da sala) para saber qual sala foi selecionada                 |
+| `useColorScheme`       | Hooks de tema       | Detecta se o dispositivo está em modo claro ou escuro                                                 |
 
 ### Como a navegação foi organizada
 
