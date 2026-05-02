@@ -34,7 +34,6 @@ Escolhemos trabalhar com o **gerenciamento de salas e chamados de manutenção**
 | _Gabriel Ber Soares rm-563520_           |
 | _Guilherme de freitas salgado rm-562494_ |
 | _Fernando de Almeida Godoi rm-564820_    |
-| _Robin Luka rm-563111_                   |
 
 ---
 
