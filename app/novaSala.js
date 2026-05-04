@@ -17,6 +17,10 @@ export default function NovaSala() {
   const router = useRouter();
   const { adicionarSala } = useContext(SalasContext);
 
+  function atualizarNumeroSala(valor) {
+    setNome(valor.replace(/\D/g, ""));
+  }
+
   function adicionarSalaHandler() {
     if (!nome.trim()) return;
 
@@ -63,7 +67,9 @@ export default function NovaSala() {
         placeholder="Número da sala"
         placeholderTextColor="#aaa"
         value={nome}
-        onChangeText={setNome}
+        onChangeText={atualizarNumeroSala}
+        keyboardType="number-pad"
+        inputMode="numeric"
       />
 
       <TouchableOpacity style={styles.botao} onPress={adicionarSalaHandler}>
