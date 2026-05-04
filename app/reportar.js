@@ -36,6 +36,8 @@ export default function Reportar() {
   const { id } = useLocalSearchParams();
   const { adicionarProblema } = useContext(SalasContext);
 
+  function cancelarOpcoesMidia() {}
+
   function abrirOpcoesMidia() {
     Alert.alert(
       "Adicionar mídia",
@@ -56,7 +58,7 @@ export default function Reportar() {
         {
           text: "Cancelar",
           style: "cancel",
-          onPress: () => {},
+          onPress: cancelarOpcoesMidia,
         },
       ],
       { cancelable: true },
